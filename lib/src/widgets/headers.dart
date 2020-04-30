@@ -31,7 +31,7 @@ class HeaderDiagonal extends StatelessWidget {
       height: double.infinity,
       width: double.infinity,
       child: CustomPaint(
-        painter: _HeaderWavePainter(),
+        painter: _HeaderWaveGradientPainter(),
       ),
     );
   }
@@ -189,5 +189,59 @@ class _HeaderWavePainter extends CustomPainter {
     return true;
   }
 }
+
+class _HeaderWaveGradientPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    final Rect rect = new Rect.fromCircle(
+      center: Offset(0, 55.0),
+      radius: 180
+    );
+
+    final Gradient gradient = new LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      stops: [
+        0.0,
+        0.5,
+        1.0
+      ],
+      colors: <Color>[
+      Color(0XFF6D05E8),
+      Color(0XFFC012FF),
+      Color(0XFF6D05FA),
+    ],
+    );
+
+    final paint = Paint()..shader = gradient.createShader(rect);
+
+    // propertis of pen
+    // paint.color = Colors.red;
+    // stroke hace la linea
+    // fill hace la linea y pinta su contenido
+    paint.style = PaintingStyle.fill;
+    paint.strokeWidth = 5;
+
+    final path = new Path();
+
+    // draw with pen and properties
+    path.moveTo(0, 0); // lleva el pointer a dicha position sin pintar
+    path.lineTo(0, size.height * 0.25);
+    // x1, y1 pendiente x2, y2 point final
+    path.quadraticBezierTo(size.width * 0.25, size.height * 0.35, size.width * 0.5, size.height * 0.25);
+    path.quadraticBezierTo(size.width * 0.75, size.height * 0.15, size.width, size.height * 0.25);
+    path.lineTo(size.width, 0);
+    // canvas
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    // TODO: implement shouldRepaint
+    return true;
+  }
+}
+
 
 
