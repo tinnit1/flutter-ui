@@ -89,7 +89,8 @@ class _Dot extends StatelessWidget {
     final ssModel = Provider.of<_SlideshowModel>(context);
     double tamano = 0.0;
     Color color;
-    if (ssModel.currentPage >= index - 0.5 && ssModel.currentPage < index + 0.5) {
+    if (ssModel.currentPage >= index - 0.5 &&
+        ssModel.currentPage < index + 0.5) {
       tamano = ssModel.bulletPrimary;
       color = ssModel.primaryColor;
     } else {
@@ -101,9 +102,7 @@ class _Dot extends StatelessWidget {
       width: tamano,
       height: tamano,
       margin: EdgeInsets.symmetric(horizontal: 5),
-      decoration: BoxDecoration(
-          color: color,
-          shape: BoxShape.circle),
+      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
     );
   }
 }
@@ -179,27 +178,23 @@ class _SlideshowModel with ChangeNotifier {
 
   set primaryColor(Color color) {
     this._primaryColor = color;
-    notifyListeners();
   }
 
   Color get secondaryColor => this._secondaryColor;
 
   set secondaryColor(Color color) {
     this._secondaryColor = color;
-    notifyListeners();
   }
 
   double get bulletPrimary => this._bulletPrimary;
 
   set bulletPrimary(double value) {
     this._bulletPrimary = value;
-    notifyListeners();
   }
 
   double get bulletSecondary => this._bulletSecondary;
 
   set bulletSecondary(double value) {
     this._bulletSecondary = value;
-    notifyListeners();
   }
 }
