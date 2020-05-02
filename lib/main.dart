@@ -1,5 +1,6 @@
 import 'package:diseniosapp/src/labs/circular_progress_page.dart';
 import 'package:diseniosapp/src/labs/slidesshow_page.dart';
+import 'package:diseniosapp/src/pages/emergency_page.dart';
 import 'package:diseniosapp/src/pages/graficas_circulares_page.dart';
 import 'package:diseniosapp/src/pages/pinterest_page.dart';
 import 'package:diseniosapp/src/pages/slideshowPage_page.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Diseños App',
-      home: PinterestPage(),
+      home: EmergencyPage(),
     );
   }
 }
